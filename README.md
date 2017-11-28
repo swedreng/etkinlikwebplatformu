@@ -5,4 +5,6 @@
 # Özellikler
 Üye kaydı / Giriş / Anasayfa / Etkinlik paylaşımı / Etkinlikleri ana sayfada görme / iletişim
 # Kullanılan teknolojiler
-AngularJs frontend / Node ExpressJs backend(Express multer,session) / Mssql Veritabanı 
+AngularJs frontend / Node ExpressJs backend(Express multer,session) / Mssql Veritabanı
+# Not 
+Socket.io yla yaptığım chat kısmını anasayfaya gömdüm site içerisine chat özelliği ekledim basit çaplı
