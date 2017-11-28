@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html class="no-js" ng-app="app">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Activity</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="stylesheet" href="stylesheets/bootstrap.min.css">
+    <link rel="stylesheet" href="stylesheets/font-awesome.min.css">
+    <link rel="stylesheet" href="stylesheets/typicons.css">
+    <link rel="stylesheet" href="stylesheets/flexslider.css">
+    <link rel="stylesheet" href="stylesheets/jquery.selectBoxIt.css">
+    <link rel="stylesheet" href="stylesheets/jquery.fancybox.css">
+    <link rel="stylesheet" href="stylesheets/main.css">
+    <script src="javascripts/js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+</head>
+<header class="navbar navbar-default hidden-menu hidden-menu-up">
+    <div class="container">
+        <div class="row">
+            <div class="navbar-header col-sm-3">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="menu-title">Menu</span>
+                    <i class="fa fa-bars"></i>
+                </button>
+                <ul class="social-icons nav navbar-nav">
+                    <li><a href="https://www.facebook.com/swedreng"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="https://twitter.com/swedreng"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="https://plus.google.com/u/1/"><i class="fa fa-google-plus"></i></a></li>
+                    <li><a href="https://www.instagram.com/anilgurler3897/"><i class="fa fa-instagram"></i></a></li>
+                </ul>
+            </div>
+            <div class="col-sm-9" ng-controller="girisController">
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav navbar-right">
+
+                        <li class="dropdown">
+                            <a href="/"><span class="glyphicon glyphicon-home"></span> Anasayfa</a>
+                        </li>
+                        <li><a href="/hakkimizda"><span class="glyphicon glyphicon-book"></span> Hakkımızda</a></li>
+                        <li class="dropdown">
+                            <a href="/uyeol" ng-model="uyeol" ng-hide="uyeol"><span class="glyphicon glyphicon-user"></span> üye Ol</a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="/giris" ng-model="girisyap" ng-show="false"><span class="glyphicon glyphicon-user"></span> Gİrİş Yap</a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="/cikis" ng-model="cikisyap" ng-hide="cikisyap"><span class="glyphicon glyphicon-off"></span> Cıkıs Yap</a>
+                        </li>
+                        <li class="drowdown">
+                            <a href="/contact"><span class="glyphicon glyphicon-earphone"></span> İletİşİm</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+
+
+<header class="main-header hidden-xs">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="logo">
+                    <h1 style="font-weight: bold;font-style: italic;font-family: Times New Roman; color:forestgreen; font-size: 30pt; ">Activity <span class="glyphicon glyphicon-fire"></span></h1>
+                </div>
+            </div>
+            <div class="col-sm-8 text-right">
+                <div class="search-wrap active">
+                    <div class="search-input">
+                        <form action="#">
+                            <div class="input-group">
+                                <input type="text" class="form-control" name="s" placeholder="Bişeyler ara ..">
+                                <span class="input-group-addon"><button type="submit"><i class="fa fa-search"></i></button></span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <a href="#" class="menu-button">Menu <i class="fa fa-bars"></i></a>
+            </div>
+        </div>
+    </div>
+</header>
+<header class="mobile-logo visible-xs">
+    <div class="" style="background-color:white;">
+        <div class="row">
+            <div class="col-xs-10 col-xs-offset-1">
+                <div class="logo">
+                    <h1 style="font-weight: bold;font-style: italic;font-family: Times New Roman; color:forestgreen; font-size: 30pt; ">Activity</h1>
+                </div>
+                <div class="mobile-search">
+                    <form action="#">
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="s" placeholder="Birşeyler ara ahbap ..">
+                            <span class="input-group-addon"><button type="submit"><i class="fa fa-search"></i></button></span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<script src="javascripts/js/jquery-1.10.1.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
+<script src="javascripts/js/bootstrap.min.js"></script>
+<script src="javascripts/js/jquery.isotope.min.js"></script>
+<script src="javascripts/js/jquery.isotope.perfectmasonry.js"></script>
+<script src="javascripts/js/jquery.raty.min.js"></script>
+<script src="javascripts/js/jquery.flexslider.js"></script>
+<script src="javascripts/js/jquery.mousewheel.js"></script>
+<script src="javascripts/js/jquery.mCustomScrollbar.js"></script>
+<script src="javascripts/js/jquery.hoverdir.js"></script>
+<script src="javascripts/js/jquery.selectBoxIt.min.js"></script>
+<script src="javascripts/js/jquery.fancybox.pack.js"></script>
+<script src="javascripts/main.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+<script src="/javascripts/app/appcontrollers/girisController.js"></script>
+
+
+
+

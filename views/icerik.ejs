@@ -1,0 +1,458 @@
+
+<!DOCTYPE html>
+<html class="no-js" ng-app="app">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Activity</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="stylesheet" href="stylesheets/bootstrap.min.css">
+    <link rel="stylesheet" href="stylesheets/font-awesome.min.css">
+    <link rel="stylesheet" href="stylesheets/typicons.css">
+    <link rel="stylesheet" href="stylesheets/flexslider.css">
+    <link rel="stylesheet" href="stylesheets/jquery.selectBoxIt.css">
+    <link rel="stylesheet" href="stylesheets/jquery.fancybox.css">
+    <link rel="stylesheet" href="stylesheets/main.css">
+    <link rel="stylesheet" href="stylesheets/sayfalama.css">
+    <script src="javascripts/js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+</head>
+<body>
+
+<header class="navbar navbar-default hidden-menu hidden-menu-up">
+    <div class="container">
+        <div class="row">
+            <div class="navbar-header col-sm-3">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="menu-title">Menu</span>
+                    <i class="fa fa-bars"></i>
+                </button>
+                <ul class="social-icons nav navbar-nav">
+                    <li><a href="https://www.facebook.com/swedreng"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="https://twitter.com/swedreng"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="https://plus.google.com/u/1/"><i class="fa fa-google-plus"></i></a></li>
+                    <li><a href="https://www.instagram.com/anilgurler3897/"><i class="fa fa-instagram"></i></a></li>
+                </ul>
+            </div>
+            <div class="col-sm-9" ng-controller="homeController">
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav navbar-right">
+
+                        <li class="dropdown">
+                            <a href="/"><span class="glyphicon glyphicon-home"></span> Anasayfa</a>
+                        </li>
+                        <li><a href="/hakkimizda"><span class="glyphicon glyphicon-book"></span> Hakkımızda</a></li>
+                        <li class="dropdown">
+                            <a href="/uyeol" ng-model="uyeol" ng-hide="uyeol"><span class="glyphicon glyphicon-user"></span> üye Ol</a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="/giris" ng-model="girisyap" ng-show="false"><span class="glyphicon glyphicon-user"></span> Gİrİş Yap</a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="/cikis" ng-model="cikisyap" ng-hide="cikisyap"><span class="glyphicon glyphicon-off"></span> Cıkıs Yap</a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="/etkinlik" ng-model="etkinlik" ng-hide="etkinlik"><span class="glyphicon glyphicon-cog"></span> Etkİnlİk </a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="/admin" ng-model="admingiris" ng-hide="admingiris"><span class="glyphicon glyphicon-cog"></span> Admin Paneli</a>
+                        </li>
+                        <li class="drowdown">
+                            <a href="/contact"><span class="glyphicon glyphicon-earphone"></span> İletİşİm</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<header class="main-header hidden-xs">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="logo">
+                    <h1 style="font-weight: bold;font-style: italic;font-family: Times New Roman; color:forestgreen; font-size: 30pt; ">Activity <span class="glyphicon glyphicon-fire"></span></h1>
+                </div>
+            </div>
+            <div class="col-sm-8 text-right">
+                <div class="search-wrap active">
+                    <div class="search-input">
+                        <form action="#">
+                            <div class="input-group">
+                                <input type="text" class="form-control" name="s" placeholder="Bişeyler ara ..">
+                                <span class="input-group-addon"><button type="submit"><i class="fa fa-search"></i></button></span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <a href="#" class="menu-button">Menu <i class="fa fa-bars"></i></a>
+            </div>
+        </div>
+    </div>
+</header>
+<header class="mobile-logo visible-xs">
+    <div class="" style="background-color:white;">
+        <div class="row">
+            <div class="col-xs-10 col-xs-offset-1">
+                <div class="logo">
+                    <h1 style="font-weight: bold;font-style: italic;font-family: Times New Roman; color:forestgreen; font-size: 30pt; ">Activity</h1>
+                </div>
+                <div class="mobile-search">
+                    <form action="#">
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="s" placeholder="Birşeyler ara ahbap ..">
+                            <span class="input-group-addon"><button type="submit"><i class="fa fa-search"></i></button></span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<script src="javascripts/js/jquery-1.10.1.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
+<script src="javascripts/js/bootstrap.min.js"></script>
+<script src="javascripts/js/jquery.isotope.min.js"></script>
+<script src="javascripts/js/jquery.isotope.perfectmasonry.js"></script>
+<script src="javascripts/js/jquery.raty.min.js"></script>
+<script src="javascripts/js/jquery.flexslider.js"></script>
+<script src="javascripts/js/jquery.mousewheel.js"></script>
+<script src="javascripts/js/jquery.mCustomScrollbar.js"></script>
+<script src="javascripts/js/jquery.hoverdir.js"></script>
+<script src="javascripts/js/jquery.selectBoxIt.min.js"></script>
+<script src="javascripts/js/jquery.fancybox.pack.js"></script>
+<script src="javascripts/jeq.js"></script>
+
+<section class="page-title">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h1>Bugün Neler Yapsam ?</h1>
+                <h4>Bir bak bakalım yapmak isteyeceğin şeyler varmıymış</h4>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+<section class="main-container" >
+    <div class="container" ng-controller="homeController">
+        <div class="row">
+            <div class="col-sm-8">
+                <div class="posts" ng-app="app" ng-init="etkinlikler">
+                    <article class="blog-post">
+                        <div id="bbbb" ng-model="bbbb"></div>
+                        <div>
+
+                            <ul ng-repeat ="etkinlik in etkinlikler">
+                                <li style="list-style: none">
+                                    <h2>
+                                        {{etkinlik.etkinlik_Ad}}
+                                    </h2>
+                                    <ul class="info">
+                                        <li><a href="#">Konu : {{etkinlik.etkinlik_Tip}} </a></li>
+                                        <li><a href="#">Tarih : {{etkinlik.etkinlik_KayitTarih}} </a></li>
+                                        <li><a href="#">Paylaşan : {{etkinlik.etkinlik_organizator}} </a></li>
+                                        <li> Begeni: <a href="#">12</a> </li>
+                                    </ul>
+                                    <div class="content">
+                                        <figure>
+                                            <a href="#">
+                                                <img style="height: 200px; width: 400px" src="{{etkinlik.etkinlik_Resim}}" alt=""/>
+                                            </a>
+                                        </figure>
+                                        <div class="text">
+                                            {{etkinlik.etkinlik_icerik}}
+                                        </div>
+                                        <a href="#" class="btn btn-default" ng-click="yorumlar(etkinlik.etkinlik_ID)">Devamını oku</a>
+                                    </div>
+
+                                </li>
+                            </ul>
+
+                            <div id="yorum" ng-show="yorum"  ng-app="app" ng-init="yorumlar">
+                                <h3>Yorumlar</h3>
+                                <ul class="container" ng-repeat="yorum in yorumlarr">
+                                    <li style="list-style: none">
+
+                                        <ul class="info">
+                                            <li><span>{{yorum.yorum_Yapan}}:</span></li>
+                                            <li><i style="color:gray"> {{yorum.yorum_Yorum}}.    </i></li>
+                                            <li>{{yorum.yorum_Tarih}}</li>
+                                        </ul>
+                                        </br>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div id="yorumyap" ng-show="goster">
+                                <form role="form" name="form" >
+                                    <input style="margin-bottom: 10px;"type="text" class="form-control" ng-model="username" id="username" placeholder="Adınız" required/>
+                                    <textarea style="margin-bottom: 10px;" type="text" class="form-control" ng-model="yorumual" id="yorumyap" placeholder="Yorum yap" cols="10" rows="5">Yorum yap</textarea>
+                                    <button style="text-align: center; margin-bottom: 10px;" ng-click="YorumYap(yorumual,etkinlik.etkinlik_ID,username)" ng-disabled="form.$invalid" class="btn btn-success" id="YorumG">Yorum yap</button>
+                                </form>
+                            </div>
+
+                            </div>
+                        </div>
+
+                    </article>
+
+                    <div class="load-more">
+                        <a href="#">Load More</a>
+                    </div>
+                </div>
+            </div>
+            <aside class="col-sm-4">
+                <div class="widgets">
+                    <div class="widget categories" >
+                        <h5>Kategoriler</h5>
+                        <ul>
+                            <li><a href="/">Spor</a></li>
+                            <li><a href="/">Gezi</a></li>
+                            <li><a href="/">Eğlence</a></li>
+                            <li><a href="/">Sanat</a></li>
+                            <li><a href="/">Fikir ve Düşünce</a></li>
+                            <li><a href="/">Bilgi ve Teknoloji</a></li>
+                            <li><a href="/">Diğer</a></li>
+                        </ul>
+                    </div>
+                    <div class="widget posts" ng-controller="homeController">
+                        <h5 style="text-align: center">Chat</h5>
+                        <div style="text-align: center" ng-model="chat" ng-show="chat">
+                            <button class="btn btn-success"><a style="color:white; text-decoration: none" href="/chat" ng-model="chat" >Chat Sayfasına giriş yapmak için tıklayınız</a></button>
+
+
+                        </div>
+                    </div>
+                    <div class="widget blog-tags">
+                        <h5>Blog tagları</h5>
+                        <ul>
+                            <li><a href="#" class="btn btn-default">illustration</a></li>
+                            <li><a href="#" class="btn btn-default">design</a></li>
+                            <li><a href="#" class="btn btn-default">web</a></li>
+                            <li><a href="#" class="btn btn-default">technology</a></li>
+                            <li><a href="#" class="btn btn-default">icons</a></li>
+                            <li><a href="#" class="btn btn-default">fonts</a></li>
+                            <li><a href="#" class="btn btn-default">photoshop</a></li>
+                            <li><a href="#" class="btn btn-default">dribble</a></li>
+                            <li><a href="#" class="btn btn-default">web</a></li>
+                            <li><a href="#" class="btn btn-default">illustration</a></li>
+                            <li><a href="#" class="btn btn-default">design</a></li>
+                        </ul>
+                    </div>
+                    <div class="widget italic-text text-center">
+                        <h5>Facebook Takip</h5>
+                        <div class="content text-center">
+                            Bizi facebook sayfamizdan takip edebilirsiniz.
+                        </div>
+                        <a href="https://www.facebook.com/swedreng" class="btn btn-primary">Takip et Facebook</a>
+                    </div>
+                    <div class="widget sponsors text-center">
+                        <div class="sponsor">
+                            <div class="via">Reklam ver</div>
+                            <figure>
+                                <a href="#">
+                                    <img src="images/sponsor02.jpg" alt=""/>
+                                </a>
+                            </figure>
+                            <div class="description">
+                                Reklamının bu kısımda yer alsın istermisin, reklam için e-mail yolla, bizimle iletişime geç.
+                                <br><a href="#">İletişim </a>.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="widget portfolio text-center">
+                        <h5>Portfolio</h5>
+                        <div class="view-more">
+
+                        </div>
+                        <div class="portfolio-slider">
+                            <ul class="slides">
+                                <li>
+                                    <figure>
+                                        <a href="#">
+                                            <img src="images/portfolio01.jpg" />
+                                        </a>
+                                    </figure>
+                                </li>
+                                <li>
+                                    <figure>
+                                        <a href="#">
+                                            <img src="images/port-slider1.jpg" />
+                                        </a>
+                                    </figure>
+                                </li>
+                                <li>
+                                    <figure>
+                                        <a href="#">
+                                            <img src="images/port-slider2.jpg" />
+                                        </a>
+                                    </figure>
+                                </li>
+                                <li>
+                                    <figure>
+                                        <a href="#">
+                                            <img src="images/port-slider3.jpg" />
+                                        </a>
+                                    </figure>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+        </div>
+    </div>
+    </div>
+    </aside>
+    </div>
+    </div>
+</section>
+
+
+<footer class="main-footer">
+    <div class="footer-newsletter">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 left">
+                    <h2>Subscribe to our <strong>newsletter</strong></h2>
+                    <p>Receive periodic articles, updates, freebies <br/> and premium items; every month.</p>
+                </div>
+                <div class="col-sm-4 right">
+                    <form action="#">
+                        <div class="input-group">
+                            <input type="email" class="form-control" name="newsletter-email" placeholder="Your Email:">
+                                <span class="input-group-btn">
+                                  <button class="btn btn-default" type="submit"><i class="fa fa-check"></i></button>
+                                </span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-social">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 text-center">
+                    <ul class="social-icons">
+                        <li><a href="https://www.facebook.com/swedreng"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="https://twitter.com/swedreng"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="https://plus.google.com/u/1/"><i class="fa fa-google-plus"></i></a></li>
+                        <li><a href="https://www.instagram.com/anilgurler3897/"><i class="fa fa-pinterest"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-widgets">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="footer-widget">
+                        <div class="logo">
+                            <h1 style="font-weight: bold;font-style: italic;font-family: Times New Roman; color:forestgreen; font-size: 30pt; ">Activity</h1>
+                        </div>
+                        <div class="copyright">Copy right 2016 <br /> Developed by <a href="/contact">Anil Gurler</a></div>
+                        <div class="motto">Proje icin bizi secin!</div>
+                        <address>
+                            İstanbul / Beylikduzu
+                        </address>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="footer-widget">
+                        <h2>Popüler paylaşimlar</h2>
+                        <ul class="popular-post">
+                            <li>
+                                <figure>
+                                    <a href="blog-single.html">
+                                        <img src="images/footer-post01.jpg" alt=""/>
+                                    </a>
+                                </figure>
+                                <div class="text">
+                                    <a href="blog-single.html">I Love Donut Bonbon Cackes</a>
+                                </div>
+                            </li>
+                            <li>
+                                <figure>
+                                    <a href="blog-single.html">
+                                        <img src="images/footer-post02.jpg" alt=""/>
+                                    </a>
+                                </figure>
+                                <div class="text">
+                                    <a href="blog-single.html">Candy fruitcake biscuit chupa chups</a>
+                                </div>
+                            </li>
+                            <li>
+                                <figure>
+                                    <a href="blog-single.html">
+                                        <img src="images/footer-post03.jpg" alt=""/>
+                                    </a>
+                                </figure>
+                                <div class="text">
+                                    <a href="blog-single.html">Candy fruitcake biscuit chupa chups</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="footer-widget">
+                        <h2>Twitter Takip</h2>
+                        <div class="twitter-feed">
+                            <figure>
+                                <a href="#">
+                                    <img src="images/anil.jpeg" alt=""/>
+                                </a>
+                            </figure>
+                            <div class="text">
+                                <a href="https://www.facebook.com/swedreng">Anıl Gürler</a>
+                            </div>
+                            <div class="content">Bizimle beraber olmaya devam edin .. <a href="/">Activity.com</a> Beni twitter adresimden takip edebilirsiniz .</div>
+                            <a href="https://twitter.com/swedreng" class="btn btn-info btn-sm pull-left">Follow us</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="footer-widget">
+                        <h2>Hakkımda</h2>
+                        <div class="text-widget">
+                            <p>Anıl Gurler , Sakarya Üniversitesi bilgisayar bilisim bilimleri fakultesi bilgisayar mühendisliği bölümü son sınıf öğrencisi..</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<div class="go-top">
+    <i class="fa fa-angle-up"></i>
+</div>
+
+<script src="javascripts/js/jquery-1.10.1.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
+<script src="javascripts/js/bootstrap.min.js"></script>
+<script src="javascripts/js/jquery.isotope.min.js"></script>
+<script src="javascripts/js/jquery.isotope.perfectmasonry.js"></script>
+<script src="javascripts/js/jquery.raty.min.js"></script>
+<script src="javascripts/js/jquery.flexslider.js"></script>
+<script src="javascripts/js/jquery.mousewheel.js"></script>
+<script src="javascripts/js/jquery.mCustomScrollbar.js"></script>
+<script src="javascripts/js/jquery.hoverdir.js"></script>
+<script src="javascripts/js/jquery.selectBoxIt.min.js"></script>
+<script src="javascripts/js/jquery.fancybox.pack.js"></script>
+<script src="javascripts/main.js"></script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+<script src="/javascripts/app/appcontrollers/homeController.js"></script>
+
+</body>
+</html>

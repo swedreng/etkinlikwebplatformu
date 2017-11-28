@@ -1,0 +1,269 @@
+<!doctype html>
+<html>
+<head>
+    <title>Socket.IO chat</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+    <link rel="stylesheet" href="stylesheets/style2.css"/>
+
+</head>
+<body>
+
+<div class="container">
+    <p class="alert alert-success"  id="aciklama">Online arkadaşınıza "/w onlinekullanıcı Mesaj" seklinde kisisel mesaj atabilirsiniz ...</p>
+    <p class="alert alert-success"  id="aciklama2">Çevrimiçi olmayan arkadaşınıza "/c kayıtlıkullanıcı Mesaj" şeklinde kişisel mesaj atabilirsiniz ...</p>
+    <div id="userFormArea" class="row">
+
+        <form id="userForm">
+            <div class="form-group">
+                <label>Enter Username</label>
+                <input class="form-control" id="username"/>
+                <br/>
+                <input type="submit" class="btn btn-primary" value="Login"/>
+            </div>
+
+        </form>
+    </div>
+
+
+
+
+    <div id="roomArea">
+
+
+        <div class="well" class="col-md-2">
+            <input id ="mainRoom" type="submit" class="btn btn-success" value="MainRoom"/>
+            <input id ="room1" type="submit" class="btn btn-success" value="Room1"/>
+            <input id="room2" type="submit" class="btn btn-warning" value="Room2"/>
+        </div>
+
+
+    </div>
+
+    <div id="messageArea" class="row">
+
+        <div class="col-md-2">
+            <div class="well">
+                <h3>Kayitli Users</h3>
+                <ul class="list-group" id="kUsers"></ul>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="well">
+                <h3>Online Users</h3>
+                <ul class="list-group" id="users"></ul>
+            </div>
+        </div>
+
+
+
+        <div class="col-md-4">
+            <div class="chat" id="chat"></div>
+            <form id="messageForm">
+                <div class="form-group">
+                    <label>Enter Message</label>
+                    <textarea class="form-control" id="message"></textarea>
+                    <br/>
+                    <input type="submit" class="btn btn-primary" value="Send Message"/>
+                </div>
+
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    $(function() {
+
+        var socket = io.connect();
+        var $messageForm = $('#messageForm');
+        var $message = $('#message');
+        var $chat = $('#chat');
+        var $messageArea = $('#messageArea');
+        var $userFormArea = $('#userFormArea');
+        var $userForm = $('#userForm');
+        var $users = $('#users');
+        var $username = $('#username');
+        var $kayForm = $('#kayForm');
+        var $usernameKay = $('#usernameKay');
+        var $passwordKay = $('#passwordKay');
+        var $zatenUye = $('#zatenUye');
+        var $kUsers = $('#kUsers');
+        var $aciklama = $('#aciklama');
+        var $aciklama2 = $('#aciklama2');
+        var $room1 = $('#room1');
+        var $room2 = $('#room2');
+        var $roomArea = $('#roomArea');
+        var $mainRoom = $('#mainRoom');
+
+
+        $userFormArea.show();
+        $aciklama.hide();
+        $aciklama2.hide();
+        $room1.hide();
+        $room2.hide();
+        $roomArea.hide();
+
+        $messageForm.submit(function (e) {
+
+            e.preventDefault();
+            socket.emit('send message', $message.val(),function(data){
+                $chat.append('<div class="well"><strong class="error">' + data + '</strong></div>');
+            });
+            $message.val('');
+        });
+
+
+        // New message
+        socket.on('new message', function (data) {
+            console.log(data.user);
+            $chat.append('<div class="well"><strong>' +data.user+ '</strong>: ' + data.msg + '</div>');
+        });
+
+
+        $userForm.submit(function (e) {
+            e.preventDefault();
+            socket.emit('new user', $username.val(), function (data) {
+                if (data) {
+                    $aciklama.show();
+                    $aciklama2.show();
+                    $userFormArea.hide();
+                    $messageArea.show();
+                    $room1.show();
+                    $room2.show();
+                    $roomArea.show();
+                }else{
+                    alert("Uye degilsiniz lutfen giris yapmak icin uye olun !");
+                }
+            });
+            $username.val('');
+        });
+
+
+
+
+
+
+
+        $zatenUye.click(function(e){
+            e.preventDefault();
+            $userFormArea.show();
+            $kayFormArea.hide();
+
+        });
+        var mainRoom = "mainroom";
+        var room1 = "room1";
+        var room2 = "room2";
+        $room1.click(function(e){
+            e.preventDefault();
+            socket.emit('room1',room1,function(){
+
+
+            });
+
+
+        });
+        $room2.click(function(e){
+            e.preventDefault();
+            socket.emit('room2',room2,function(){
+            });
+        });
+        $mainRoom.click(function(e){
+            e.preventDefault();
+            socket.emit('mainRoom',mainRoom,function(){
+
+            });
+        });
+
+
+
+
+
+
+
+        socket.on('room1',function(data){
+            console.log(data);
+            $chat.append('<div class="well"><strong class="private">' +data+ '</strong></div>');
+
+        })
+        socket.on('room2',function(data){
+            console.log(data);
+            $chat.append('<div class="well"><strong class="private">' +data+ '</strong></div>');
+
+        });
+        socket.on('mainRoom',function(data){
+            console.log(data);
+            $chat.append('<div class="well"><strong class="private">' +data+ '</strong></div>');
+
+        });
+
+
+
+
+
+        socket.on('private',function(data){
+
+            $chat.append('<div class="well"><strong class="private">' +data.user+ '</strong>: ' + data.msg + '</div>');
+
+        });
+
+
+
+        socket.emit('get not online users',function(){
+
+        });
+
+        socket.on('cevrimdisiMesaj',function(data){
+            for (i = 0; i < data.length; i++) {
+                var yeniTarih = data[i]["cevrimdisiMesajlar_tarih"].trim();
+                var tarih = yeniTarih.substr(0,10);
+                var saat = yeniTarih.substr(11,8);
+                var tarihSaat = tarih+" "+saat;
+
+                console.log(tarih);
+
+                $chat.append('<div class="well"> <strong>' +data[i]["cevrimdisiMesajlar_kim"]+ '</strong>: ' + data[i]["cevrimdisiMesajlar_mesaj"] +'  ' + "(" + tarihSaat + ")" +'</div>');
+
+            }
+
+        });
+
+
+
+
+
+        socket.on('get not online users', function(data){
+            console.log(data);
+            var html = '';
+            for (i = 0; i < data.length; i++) {
+                html += '<li class="list-group-item"><i class="glyphicon glyphicon-user"> ' + data[i]["uye_Username"] + '</i></li>';
+
+                $kUsers.html(html);
+            }
+
+        });
+
+
+
+        socket.on('get users', function (data) {
+
+            var html = '';
+            for (i = 0; i < data.length; i++) {
+                html += '<li class="list-group-item"><i class="glyphicon glyphicon-user"> ' + data[i] + '</i></li>';
+
+                $users.html(html);
+            }
+        });
+
+
+    });
+
+
+
+</script>
+</body>
+</html>

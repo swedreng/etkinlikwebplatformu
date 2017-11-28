@@ -1,0 +1,26 @@
+#girisS{
+
+  margin-left :32%;
+  margin-right:10%;
+  width: 500px;
+  padding-bottom: 100%;
+
+  width:43%;
+  max-width:1024px; /*En fazla 1024px olsun  ama  yukardaki width özelliðim de  geçerli olsun*/
+  height:auto;
+  min-height:500px;
+  margin:auto;
+
+}
+.arkaplan{
+
+  background-image: url('/images/arkaplan.jpg');
+}
+#inputG ::-webkit-input-placeholder {
+  text-align:center;
+}
+#buttonG {
+  margin-left: 35%;
+  width:150px;
+
+}
